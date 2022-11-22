@@ -1,5 +1,4 @@
 var express = require("express");
-const { route } = require("../../app");
 var router = express.Router();
 
 //import controller
