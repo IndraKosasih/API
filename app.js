@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const passport = require('passport');
 require("./app_api/models/db");
-require("./app_api/config/passport")
+
 
 var indexRouter = require('./app_server/routes/index');
 var apiRouter = require("./app_api/routes/index");

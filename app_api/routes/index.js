@@ -1,37 +1,18 @@
 var express = require("express");
 var router = express.Router();
-const {
-    expressjwt: jwt
-} = require('express-jwt');
-const auth = jwt({
-    secret: process.env.JWT_SECRET,
-    userProperty: 'payload',
-    algorithms: ['HS256']
-})
+
 //import controller
-const ctrlBerkas = require("../controllers/berkas");
-const ctrlSurat = require("../controllers/surat");
-const ctrlAuth = require('../controllers/authentication');
 
-router.route("/berkas")
-    .get(ctrlBerkas.berkasList)
-    .post(ctrlBerkas.berkasCreate);
+const ctrlNegara = require("../controllers/negara");
+router.route("/negara")
+    .get(ctrlNegara.negaraList)
+    .post(ctrlNegara.negaraCreate);
 
-router.route("/berkas/:id")
-    .get(ctrlBerkas.berkasReadOne)
-    .put(ctrlBerkas.berkasUpdateOne)
-    .delete(ctrlBerkas.berkasDeleteOne);
+router.route("/negara/:id")
+    .get(ctrlNegara.negaraReadOne)
+    .put(ctrlNegara.negaraUpdateOne)
+    .delete(ctrlNegara.negaraDeleteOne);
 
-router.route("/surat")
-    .get(ctrlSurat.suratList)
-    .post(ctrlSurat.suratCreate);
 
-router.route("/surat/:id")
-    .get(ctrlSurat.suratReadOne)
-    .put(ctrlSurat.suratUpdateOne)
-    .delete(ctrlSurat.suratDeleteOne);
-
-router.post('/register', ctrlAuth.register);
-router.post('/login', ctrlAuth.login);
 //method : get, push, patch, put, delete
 module.exports = router;

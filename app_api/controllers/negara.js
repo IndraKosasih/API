@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-const surat = mongoose.model("Surat");
+const negara = mongoose.model("Negara");
 
-const suratList = (req, res) => {
-    surat.find({},
+const negaraList = (req, res) => {
+    negara.find({},
         function (err, result) {
             if (err) {
                 res.status(500)
@@ -18,15 +18,15 @@ const suratList = (req, res) => {
 
 }
 
-const suratCreate = (req, res) => {
-    surat.create({
-        nomor_surat: req.body.nomor_surat,
-        tgl_surat: req.body.tgl_surat,
-        jenis_surat: req.body.jenis_surat,
-        uraian: req.body.uraian,
-        pejabat_penandatangan: req.body.pejabat_penandatangan,
-        nama_penandatangan: req.body.nama_penandatangan,
-        nama_ditugaskan: req.body.nama_ditugaskan
+const negaraCreate = (req, res) => {
+    negara.create({
+        nama_negara: req.body.nama_negara,
+        ibukota: req.body.ibukota,
+        benua: req.body.benua,
+        populasi: req.populasi,
+        luas_wilayah: req.body.luas_wilayah,
+        tgl_bergabung: req.body.tgl_bergabung,
+        mata_uang: req.body.mata_uang
     }, (err, result) => {
         if (err) {
             res
@@ -41,27 +41,27 @@ const suratCreate = (req, res) => {
 
 }
 
-const suratReadOne = (req, res) => {
-    surat
+const negaraReadOne = (req, res) => {
+    negara
         .findById(req.params.id)
-        .exec((err, surat) => {
+        .exec((err, negara) => {
             res
                 .status(200)
-                .json(surat);
+                .json(negara);
         });
 }
 
-const suratUpdateOne = (req, res) => {
-    surat
+const negaraUpdateOne = (req, res) => {
+    negara
         .findById(req.params.id)
-        .exec((err, surat) => {
-            surat.nama_surat = req.body.nama_surat;
-            surat.tgl_surat = req.body.tgl_surat;
-            surat.jenis_surat = req.body.jenis_surat,
-                surat.uraian = req.body.uraian,
-                surat.pejabat_penandatangan = req.body.pejabat_penandatangan,
-                surat.nama_penandatangan = req.body.nama_penandatangan,
-                surat.nama_ditugaskan = req.body.nama_ditugaskan
+        .exec((err, negara) => {
+            negara.nama_negara= req.body.nama_negara,
+            negara.ibukota= req.body.ibukota,
+            negara.benua= req.body.benua,
+            negara.populasi= req.populasi,
+            negara.luas_wilayah= req.body.luas_wilayah,
+            negara.tgl_bergabung= req.body.tgl_bergabung,
+            negara.mata_uang= req.body.mata_uang
             surat.save((err, result) => {
                 if (err) {
                     res
@@ -79,11 +79,11 @@ const suratUpdateOne = (req, res) => {
 
 }
 
-const suratDeleteOne = (req, res) => {
-    surat
+const negaraDeleteOne = (req, res) => {
+    negara
         .findById(req.params.id)
-        .exec((err, surat) => {
-            surat.remove((err, result) => {
+        .exec((err, negara) => {
+            negara.remove((err, result) => {
                 if (err) {
                     res
                         .status(404)
@@ -97,9 +97,9 @@ const suratDeleteOne = (req, res) => {
 }
 
 module.exports = {
-    suratList,
-    suratCreate,
-    suratReadOne,
-    suratUpdateOne,
-    suratDeleteOne
+    negaraList,
+    negaraCreate,
+    negaraReadOne,
+    negaraUpdateOne,
+    negaraDeleteOne
 }

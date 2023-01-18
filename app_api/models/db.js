@@ -1,7 +1,8 @@
 let mongoose = require("mongoose");
 
 
-let dbURI = "mongodb+srv://si:sisteminformasi@cluster0.zxiwyfw.mongodb.net/simarta?retryWrites=true&w=majority";
+//let dbURI = "mongodb+srv://si:sisteminformasi@cluster0.zxiwyfw.mongodb.net/simarta?retryWrites=true&w=majority";
+let dbURI = "mongodb+srv://SI:sisteminformasi@cluster0.gvllexk.mongodb.net/uas_si51?retryWrites=true&w=majority";
 
 mongoose.connect(dbURI, {
     useNewUrlParser: true
@@ -20,6 +21,5 @@ mongoose.connection.on("disconnected", () => {
 });
 
 //memanggil model
-require("./berkas");
-require("./surat");
-require("./users");
+
+require("./negara");
