@@ -10,11 +10,7 @@ const berkasList = (req,res) => {
                     .json({"status" : "failed"});
             } else {
                 res.status(200)
-                .json(
-                    {
-                        "status" : "success",
-                        "data" : result
-                    });
+                .json(result);
             }
         });
 

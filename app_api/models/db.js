@@ -1,5 +1,6 @@
 let mongoose = require("mongoose");
 
+
 let dbURI = "mongodb+srv://si:sisteminformasi@cluster0.zxiwyfw.mongodb.net/simarta?retryWrites=true&w=majority";
 
 mongoose.connect(dbURI, {
